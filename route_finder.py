@@ -101,4 +101,4 @@ if button:
   
     placeholder.download_button('Download Directions', data=html_data, file_name='directions.html', mime='text/html')
     
-st_folium(m,user_container_width=True, height=500, returned_objects=[])
+st_folium(m,use_container_width=True, height=500, returned_objects=[])

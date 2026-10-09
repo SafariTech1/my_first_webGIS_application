@@ -69,7 +69,7 @@ def get_directions(origin_name, destination_name):
     
 
 
-m = folium.Map(location=[39.949610, -75.150282], zoom_start=5)
+m = folium.Map(location=[-1.286389, 36.817223], zoom_start=5)
 if origin:
     origin_coords = geocode(origin)
     folium.Marker(
@@ -97,8 +97,8 @@ if button:
     folium.PolyLine(route_xy, tooltip=tooltip).add_to(m)
     placeholder.text(tooltip)
     
-    m.save('directions.html')
-    with open('directions.html') as file:
-        placeholder.download_button('Download Directions', data=file, file_name='directions.html')
+    html_data = m.get_root().render()
+  
+    placeholder.download_button('Download Directions', data=html_data, file_name='directions.html', mime='text/html')
     
-st_folium(m, width=800, returned_objects=[])
+st_folium(m,user_container_width=True, height=500, returned_objects=[])
